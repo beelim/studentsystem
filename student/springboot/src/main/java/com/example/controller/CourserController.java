@@ -22,9 +22,10 @@ public class CourserController
 
     @GetMapping("/selectPage")
     public Result selectPage(@RequestParam(defaultValue = "1") Integer pageNum,
-                             @RequestParam(defaultValue = "5") Integer pageSize)
+                             @RequestParam(defaultValue = "5") Integer pageSize,
+                             Course course)     // ?name=xx&no=xx
     {
-        PageInfo<Course> pageInfo = courseService.selectPage(pageNum, pageSize);
+        PageInfo<Course> pageInfo = courseService.selectPage(pageNum, pageSize,course);
         return Result.success(pageInfo);
     }
 }

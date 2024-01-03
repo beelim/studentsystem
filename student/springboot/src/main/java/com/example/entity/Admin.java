@@ -1,10 +1,26 @@
 package com.example.entity;
 
 public class Admin extends Account{
+
     private Integer id;
+    //账号
     private String username;
+    //密码
     private String password;
+    //名称
     private String name;
+
+    private String role;
+
+    @Override
+    public String getRole() {
+        return role;
+    }
+
+    @Override
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public Integer getId() {
         return id;
