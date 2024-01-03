@@ -1,0 +1,6 @@
+com\example\exception\CustomException.class
+com\example\Application.class
+com\example\common\Result.class
+com\example\controller\WebController.class
+com\example\common\CorsConfig.class
+com\example\exception\GlobalExceptionHandler.class
