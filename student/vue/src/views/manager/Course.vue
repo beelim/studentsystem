@@ -1,30 +1,35 @@
 <template>
   <div>
 
-    <div class="card" style="margin-bottom: 10px;">
-      <el-input style="width: 300px; margin-right: 10px" placeholder="请输入关键字查询"></el-input>
-      <el-button type="primary">查询</el-button>
-      <el-button type="info" style="margin: 0 10px">重置</el-button>
+    <div class="card" style="margin-bottom: 10px">
+      <el-input style="width: 260px"; v-model="data.name"  placeholder="请输入课程名称查询":prefix-icon="Search"/>
+      <el-button type="primary" style="margin: 0 10px" >查询</el-button>
+      <el-button type="info" >重置</el-button>
     </div>
 
     <div class="card" style="margin-bottom: 10px">
       <div style="margin-bottom: 10px">
-        <el-button type="primary" @click="handleAdd">新增</el-button>
+        <el-button type="primary">新增</el-button>
       </div>
-      <el-table stripe :data="data.tableData">
-        <el-table-column label="名称" prop="name"></el-table-column>
-        <el-table-column label="描述" prop="descr"></el-table-column>
-        <el-table-column label="课时" prop="times"></el-table-column>
-        <el-table-column label="操作" align="center" width="160">
-          <template v-slot="scope">
-            <el-button type="primary" @click="handleEdit">编辑</el-button>
-            <el-button type="danger" @click="handleDelete">删除</el-button>
+      <el-table stripe :data="data.tableData" style="width: 100%">
+        <el-table-column label="序号" prop="id" width="70 "/>
+        <el-table-column label="课程号" prop="no"/>
+        <el-table-column label="名称" prop="name"/>
+        <el-table-column label="描述" prop="descr"/>
+        <el-table-column label="课时" prop="times"/>
+        <el-table-column label="教师" prop="teacher"/>
+        <el-table-column>
+          <template #default="scope">
+            <el-button type="primary" plain="false">编辑</el-button>
+            <el-button type="danger" plain="false">删除 </el-button>
           </template>
         </el-table-column>
       </el-table>
     </div>
-
-    <div class="card">
+<div class="card">
+    <el-pagination background layout="prev, pager, next" :total="1000" />
+</div>
+<!--    <div class="card">
       <el-pagination background layout="prev, pager, next" :page-size="8" v-model:current-page="data.pageNum" :total="1000"/>
     </div>
 
@@ -36,44 +41,38 @@
         <el-form-item label="描述" prop="descr">
           <el-input v-model="data.form.descr" autocomplete="off" />
         </el-form-item>
-      </el-form>
-      <template #footer>
+      </el-form>-->
+<!--      <template #footer>
       <span class="dialog-footer">
         <el-button @click="data.formVisible = false">取 消</el-button>
         <el-button type="primary" @click="data.formVisible = false">保 存</el-button>
       </span>
       </template>
-    </el-dialog>
+    </el-dialog>-->
 
   </div>
 </template>
 
 <script setup>
-import request from "@/utils/request";
+import { Search} from '@element-plus/icons-vue'
 import {reactive} from "vue";
-import {ElMessageBox} from "element-plus";
 
-request.get('/').then(res => {
+/*request.get('/').then(res => {
   console.log(res)
-})
+})*/
 
 const data = reactive({
-  pageNum: 1,
-  formVisible: false,
-  form: {},
+ name:'',
   tableData: [
-    {name: '大学英语', descr: '大学英语真有趣', times: '24课时'},
-    {name: '大学英语', descr: '大学英语真有趣', times: '24课时'},
-    {name: '大学英语', descr: '大学英语真有趣', times: '24课时'},
-    {name: '大学英语', descr: '大学英语真有趣', times: '24课时'},
-    {name: '大学英语', descr: '大学英语真有趣', times: '24课时'},
-    {name: '大学英语', descr: '大学英语真有趣', times: '24课时'},
-    {name: '大学英语', descr: '大学英语真有趣', times: '24课时'},
-    {name: '大学英语', descr: '大学英语真有趣', times: '24课时'},
+    {id:1,name: '大学英语',no:'CS001', descr: '大学英语真有趣', times: '24课时',teacher:'张三'},
+    {id:2,name: '高等数学',no:'CS002', descr: '高等数学真有趣', times: '24课时',teacher:'李四'},
+    {id:3,name: '大学物理',no:'CS003', descr: '大学物理真有趣', times: '24课时',teacher:'王五'},
+    {id:4,name: '数据结构',no:'CS004', descr: '数据结构真有趣', times: '24课时',teacher:'赵六'},
+    {id:5,name: '操作系统',no:'CS005', descr: '操作系统真有趣', times: '24课时',teacher:'孙七'},
   ]
 })
 
-const handleAdd = () => {
+/*const handleAdd = () => {
   data.form = {}
   data.formVisible = true
 }
@@ -87,5 +86,5 @@ const handleDelete = (id) => {
   }).catch(err => {
     console.error(err)
   })
-}
+}*/
 </script>
