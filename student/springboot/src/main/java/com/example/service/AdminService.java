@@ -14,13 +14,12 @@ public class AdminService {
     @Resource
     private AdminMapper adminMapper;
 
-
     /**
      * 登录
      */
     public Account login(Account account){
         Account dbAdmin = adminMapper.selectByUsername(account.getPassword());
-        if(dbAdmin ==null) {
+        if(dbAdmin == null) {
             throw new CustomException("账号或密码错误");
         }
 

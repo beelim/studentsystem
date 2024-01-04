@@ -6,9 +6,12 @@ import com.example.entity.Account;
 import com.example.entity.Student;
 import com.example.exception.CustomException;
 import com.example.mapper.StudentMapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class StudentService {
@@ -45,7 +48,7 @@ public class StudentService {
     /**
      *新增
      */
-    private void add(Student student) {
+    public void add(Student student) {
 
         Student dbStudent = studentMapper.selectByUsername(student.getUsername());
         if(dbStudent != null){  //已有同名账号 不允许插入
@@ -60,4 +63,25 @@ public class StudentService {
 
     }
 
+    /**
+     *删除
+     */
+    public void deleteById(Integer id) {
+        studentMapper.deleteById(id);
+    }
+
+    /**
+     *更新
+     */
+    public void updateById(Student student) {
+        studentMapper.updateById(student);
+    }
+    /**
+     *分页查询
+     */
+    public PageInfo<Student> selectPage(Integer pageNum, Integer pageSize, Student student) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<Student> studentList = studentMapper.selectAll(student);
+        return PageInfo.of(studentList);
+    }
 }

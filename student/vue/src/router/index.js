@@ -11,7 +11,8 @@ const router = createRouter({
       children: [
         { path: 'home', name: 'Home', component: () => import('@/views/manager/Home.vue')},
         { path: 'course', name: 'Course', component: () => import('@/views/manager/Course.vue')},
-        { path: 'student', name: 'Student', component: () => import('@/views/manager/Student.vue')},
+        { path: 'courseList', name: 'CourseList', component: () => import('@/views/manager/CourseList.vue')},
+        { path: 'studentCourse', name: 'StudentCourse', component: () => import('@/views/manager/StudentCourse.vue')},
       ]
     },
     { path: '/login' , name: 'Login' , component: () => import('@/views/Login.vue'),},

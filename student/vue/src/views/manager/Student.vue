@@ -23,11 +23,7 @@
           <el-table-column prop="email" label="学生邮箱"/>
           <el-table-column prop="sex" label="性别"/>
           <el-table-column prop="birth" label="生日"/>
-          <el-table-column prop="avatar" label="头像">
-            <template #default="scope">
-              <el-image v-if="scope.row.avatar" :src="scope.row.avatar" :preview-src-list="[scope.row.avatar]" style="width: 40px; height: 40px; border-radius: 5px"></el-image>
-            </template>
-          </el-table-column>
+          <el-table-column prop="avatar" label="头像"/>
           <el-table-column label="操作" width="180">
             <template #default="scope">
               <el-button type="primary" >编辑</el-button>

@@ -30,21 +30,23 @@ public class CourserController
         PageInfo<Course> pageInfo = courseService.selectPage(pageNum, pageSize,course);
         return success(pageInfo);
     }
+    /**
+     *新增课程
+     */
     @PostMapping("/add")//往数据库插入数据
     public  Result add(@RequestBody Course course)
     {
         courseService.add(course);
         return Result.success();
     }
+    /**
+     *更新课程
+     */
     @PutMapping("/update")
-public Result update(@RequestBody Course course) {
+    public Result update(@RequestBody Course course) {
     courseService.updateById(course);
     return Result.success();
 }
-
-
-
-
     /**
      *删除课程
      */
