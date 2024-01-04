@@ -9,7 +9,7 @@
       </div>
       <div style="width: fit-content; padding-right: 10px; display: flex; align-items: center;">
         <img src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" alt="" style="width: 40px; height: 40px">
-        <span style="margin-left: 5px">管理员</span>
+        <span style="margin-left: 5px">{{user.name}}</span>
       </div>
     </div>
 
@@ -19,7 +19,7 @@
             router
             style="border: none"
             :default-active="$route.path"
-            :default-openeds="['/home', '2']"
+            :default-openeds="['/home', '2','3']"
         >
           <el-menu-item index="/home">
             <el-icon><HomeFilled /></el-icon>
@@ -35,7 +35,19 @@
               <span>课程信息</span>
             </el-menu-item>
           </el-sub-menu>
-          <el-menu-item index="/person">
+
+          <el-sub-menu index="3" v-if="user.role === 'ADMIN'">
+            <template #title>
+              <el-icon><User /></el-icon>
+              <span>用户管理</span>
+            </template>
+            <el-menu-item index="/student">
+              <el-icon><UserFilled /></el-icon>
+              <span>学生信息</span>
+            </el-menu-item>
+          </el-sub-menu>
+
+          <el-menu-item index="/person" v-if="user.role === 'STUDENT'">
             <el-icon><User /></el-icon>
             <span>个人资料</span>
           </el-menu-item>
@@ -57,7 +69,7 @@
 <script setup>
 import { useRoute } from 'vue-router'
 const $route = useRoute()
-console.log($route.path)
+const user = JSON.parse(localStorage.getItem('student-user') || '{}')
 
 const logout = () => {
   localStorage.removeItem('student-user')

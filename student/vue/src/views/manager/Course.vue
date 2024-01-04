@@ -23,7 +23,7 @@
           <el-table-column prop="descr" label="课程描述" />
           <el-table-column prop="times" label="课时" />
           <el-table-column prop="teacher" label="任课老师" />
-          <el-table-column>
+          <el-table-column label="操作" width="180">
             <template #default="scope">
               <el-button type="primary" >编辑</el-button>
               <el-button type="danger" >删除</el-button>
