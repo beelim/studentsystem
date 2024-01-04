@@ -22,7 +22,8 @@ public class CourseService
         List<Course> courseList = courseMapper.selectAll(course);
         return PageInfo.of(courseList);
     }
-//新增数据
+
+    //新增数据
     public void add(Course course) {
         courseMapper.insert(course);
     }
