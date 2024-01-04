@@ -9,4 +9,5 @@ public interface GradeMapper {
             "values (#{courseId},#{studentId},#{score},#{comment},#{feedback})")
     void insert(Grade grade);
 
+
 }
