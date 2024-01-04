@@ -9,6 +9,7 @@ public interface StudentMapper {
     @Select("select * from student where username = #{username}")
     Student selectByUsername(String username);
 
-    @Insert("insert into student(username,password,name,phone,email,sex,birth,avatar,role) values(#{username},#{password},#{name},#{phone},#{email},#{sex},#{birth},#{avatar},#{role})")
+    @Insert("insert into student(username,password,name,phone,email,sex,birth,avatar,role) " +
+            "values(#{username},#{password},#{name},#{phone},#{email},#{sex},#{birth},#{avatar},#{role})")
     void insert(Student student);
 }

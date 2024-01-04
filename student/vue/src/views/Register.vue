@@ -68,7 +68,7 @@ const register = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("@/assets/imgs/1.png");
+  background-image: url("@/assets/imgs/bg1.png");
   background-size: cover;
 }
 

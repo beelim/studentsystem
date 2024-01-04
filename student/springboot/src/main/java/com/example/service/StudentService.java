@@ -17,7 +17,6 @@ public class StudentService {
     private StudentMapper studentMapper;
     /**
      * 登录
-
      */
     public Account login(Account account) {
         Account dbStudent = studentMapper.selectByUsername(account.getUsername());
@@ -33,6 +32,9 @@ public class StudentService {
         return dbStudent;
     }
 
+    /**
+     * 学生注册
+     */
     public void register(Account account){
         Student student = new Student();
         student.setUsername(account.getUsername());  //账号
@@ -40,8 +42,8 @@ public class StudentService {
         this.add(student);
     }
 
-    /*
-    *新增
+    /**
+     *新增
      */
     private void add(Student student) {
 
