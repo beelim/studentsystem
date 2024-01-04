@@ -54,6 +54,7 @@ const login = () => {
     if (valid) {
       request.post('/login',data.form).then(res => {
         if (res.code === '200') {
+
           localStorage.setItem('student-user', JSON.stringify(res.data))
           ElMessage.success('登录成功')
           console.log(res.data)

@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface StduentCourseMapper {
 
-    @Insert("insert into student_course(name,no,student_id,course_id) values(#{name},#{no},#{student_id},#{course_id})")
+    @Insert("insert into student_course (name,no,student_id,course_id) values(#{name},#{no},#{studentId},#{courseId})")
     void insert(StudentCourse studentCourse);
 
     @Select("select * from student_course where student_id = #{studentId} and course_id = #{courseId}")

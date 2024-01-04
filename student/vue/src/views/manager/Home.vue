@@ -10,5 +10,7 @@
 
 <script setup>
   import request from "@/utils/request";
+
   const user = JSON.parse(localStorage.getItem('student-user') || '{}')
+
 </script>

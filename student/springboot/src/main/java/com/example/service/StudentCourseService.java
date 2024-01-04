@@ -15,6 +15,7 @@ public class StudentCourseService {
 
     @Resource
     StduentCourseMapper stduentCourseMapper;
+
     public void add(StudentCourse studentCourse){
         StudentCourse course = stduentCourseMapper.selectByCondition(studentCourse);//通过学生ID和课程ID进行一次查询的筛选，看学生之前有没有选过该课程
         if (course != null){

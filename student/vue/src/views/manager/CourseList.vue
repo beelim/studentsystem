@@ -82,7 +82,7 @@ const reset = () => {
   load()
 }
 
-const selectCourse =(row) => {
+const selectCourse = (row) => {
   request.post('/studentCourse/add', {studentId: data.student.id, name: row.name, no: row.no, courseId: row.id}).then(res =>{
   if (res.code === '200') {
     ElMessage.success("操作成功")
