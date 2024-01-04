@@ -15,8 +15,8 @@ public class StudentCourseController {
     @Resource
     StudentCourseService studentCourseService;
 
-    /*
-    *学生选课
+    /**
+     *学生选课
      */
     @PostMapping("/add")
     public Result add(@RequestBody StudentCourse studentCourse){

@@ -24,6 +24,6 @@ public interface StudentMapper {
             "email = #{email},sex = #{sex},birth = #{birth},avatar = #{avatar} where id = #{id}")
     void updateById(Student student);
 
-    @Select("select * from student where username like concat('%',#{username},'%') and name like concat('%',#{name},'%') order by id desc")
+    @Select("select * from student where username like concat('%',#{username},'%') and name like concat('%',#{name},'%') ")
     List<Student> selectAll(Student student);
 }

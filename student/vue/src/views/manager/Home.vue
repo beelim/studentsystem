@@ -9,8 +9,8 @@
 </template>
 
 <script setup>
-  import request from "@/utils/request";
+import request from "@/utils/request";
 
-  const user = JSON.parse(localStorage.getItem('student-user') || '{}')
+const user = JSON.parse(localStorage.getItem('student-user') || '{}')
 
 </script>

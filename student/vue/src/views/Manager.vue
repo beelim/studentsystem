@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div style="height: 60px; background-color: #fff; display: flex; align-items: center; border-bottom: 1px solid #ddd">
+    <div
+        style="height: 60px; background-color: #fff; display: flex; align-items: center; border-bottom: 1px solid #ddd">
       <div style="flex: 1">
         <div style="padding-left: 20px; display: flex; align-items: center">
           <img src="@/assets/imgs/logo.png" alt="" style="width: 40px">
@@ -8,8 +9,9 @@
         </div>
       </div>
       <div style="width: fit-content; padding-right: 10px; display: flex; align-items: center;">
-        <img src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" alt="" style="width: 40px; height: 40px">
-        <span style="margin-left: 5px">管理员</span>
+        <img :src="user.avatar || 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png'" alt=""
+             style="width: 40px; height: 40px; border-radius: 50%" >
+        <span style="margin-left: 5px">{{ user.name }}</span>
       </div>
     </div>
 
@@ -22,45 +24,63 @@
             :default-openeds="['/home', '2', '3']"
         >
           <el-menu-item index="/home">
-            <el-icon><HomeFilled /></el-icon>
+            <el-icon>
+              <HomeFilled/>
+            </el-icon>
             <span>系统首页</span>
           </el-menu-item>
           <el-sub-menu index="2">
             <template #title>
-              <el-icon><Memo /></el-icon>
+              <el-icon>
+                <Memo/>
+              </el-icon>
               <span>课程管理</span>
             </template>
             <el-menu-item index="/course" v-if="user.role === 'ADMIN' ">
-              <el-icon><Document /></el-icon>
+              <el-icon>
+                <Document/>
+              </el-icon>
               <span>课程信息</span>
             </el-menu-item>
             <el-menu-item index="/courseList" v-if="user.role === 'STUDENT'">
-              <el-icon><Document /></el-icon>
+              <el-icon>
+                <Document/>
+              </el-icon>
               <span>选课信息</span>
             </el-menu-item>
             <el-menu-item index="/studentCourse">
-              <el-icon><Document /></el-icon>
+              <el-icon>
+                <Document/>
+              </el-icon>
               <span>选课记录</span>
             </el-menu-item>
           </el-sub-menu>
 
           <el-sub-menu index="3" v-if="user.role === 'ADMIN'">
             <template #title>
-              <el-icon><User /></el-icon>
+              <el-icon>
+                <User/>
+              </el-icon>
               <span>用户管理</span>
             </template>
             <el-menu-item index="/student">
-              <el-icon><UserFilled /></el-icon>
+              <el-icon>
+                <UserFilled/>
+              </el-icon>
               <span>学生信息</span>
             </el-menu-item>
           </el-sub-menu>
 
           <el-menu-item index="/person" v-if="user.role === 'STUDENT'">
-            <el-icon><User /></el-icon>
+            <el-icon>
+              <User/>
+            </el-icon>
             <span>个人资料</span>
           </el-menu-item>
           <el-menu-item index="login" @click="logout">
-            <el-icon><SwitchButton /></el-icon>
+            <el-icon>
+              <SwitchButton/>
+            </el-icon>
             <span>退出系统</span>
           </el-menu-item>
         </el-menu>
@@ -68,7 +88,7 @@
       </div>
 
       <div style="flex: 1; width: 0; background-color: #f8f8ff; padding: 10px">
-        <router-view />
+        <router-view/>
       </div>
     </div>
 
@@ -76,7 +96,8 @@
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router'
+import {useRoute} from 'vue-router'
+
 const $route = useRoute()
 const user = JSON.parse(localStorage.getItem('student-user') || '{}')
 console.log($route.path)
@@ -90,10 +111,12 @@ const logout = () => {
 .el-menu-item.is-active {
   background-color: #dcede9 !important;
 }
+
 .el-menu-item:hover {
   color: #11A983;
 }
-:deep(th)  {
+
+:deep(th) {
   color: #333;
 }
 </style>

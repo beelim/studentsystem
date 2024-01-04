@@ -11,7 +11,7 @@ import java.util.List;
 public interface CourseMapper
 {
     @Select("select * from course where name like concat('%', #{name} ,'%') and no like concat('%', #{no} ,'%') " +
-            "and teacher like concat('%', #{teacher} ,'%') order by id desc")
+            "and teacher like concat('%', #{teacher} ,'%') ")
     List<Course> selectAll(Course course);
 
     @Insert("insert into course (name,no,descr,times,teacher) values(#{name},#{no},#{descr},#{times},#{teacher})")

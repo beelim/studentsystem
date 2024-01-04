@@ -11,7 +11,7 @@
           </el-upload>
         </el-form-item>
         <el-form-item label="学生账号" prop="username">
-          <el-input v-model="data.form.username" autocomplete="off" disabled />
+          <el-input v-model="data.form.username" autocomplete="off" disabled/>
         </el-form-item>
         <el-form-item label="学生密码" prop="password">
           <el-input show-password v-model="data.form.password" autocomplete="off"/>
@@ -50,14 +50,14 @@ import {ElMessage} from "element-plus";
 import router from "@/router";
 import {Plus} from "@element-plus/icons-vue"
 
-const data=reactive({
-  form:JSON.parse(localStorage.getItem('student-user')||"{}")
+const data = reactive({
+  form: JSON.parse(localStorage.getItem('student-user') || "{}")
 })
-const handleImgUploadSuccess=(res)=>{
-  data.form.avater=res.data
+const handleImgUploadSuccess = (res) => {
+  data.form.avater = res.data
 }
-const update=()=>{
-  request.put('/student/update',data.form).then(res=>{
+const update = () => {
+  request.put('/student/update', data.form).then(res => {
     if (res.code === '200') {
       ElMessage.success("操作成功")
       router.push('/login')
@@ -66,8 +66,6 @@ const update=()=>{
     }
   })
 }
-
-
 </script>
 <style>
 .avatar-uploader .el-upload {
@@ -77,9 +75,11 @@ const update=()=>{
   position: relative;
   overflow: hidden;
 }
+
 .avatar-uploader .el-upload:hover {
   border-color: #409EFF;
 }
+
 .avatar-uploader-icon {
   font-size: 28px;
   color: #8c939d;
@@ -88,6 +88,7 @@ const update=()=>{
   line-height: 100px;
   text-align: center;
 }
+
 .avatar {
   width: 100px;
   height: 100px;
