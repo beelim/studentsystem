@@ -10,6 +10,12 @@
           <el-form-item prop="password">
             <el-input show-password prefix-icon="Lock" v-model="data.form.password" placeholder="请输入密码"/>
           </el-form-item>
+          <el-form-item prop="role">
+            <el-select style="width: 100%" v-model="data.form.role">
+              <el-option value="ADMIN" label="管理员"></el-option>
+              <el-option value="STUDENT" label="学生"></el-option>
+            </el-select>
+          </el-form-item>
           <el-form-item>
             <el-button type="primary" style="width: 100%" @click="login">登 录</el-button>
           </el-form-item>
@@ -29,7 +35,7 @@ import {ElMessage} from "element-plus";
 import router from "@/router";
 
 const data = reactive({
-  form: {}
+  form: { role: 'ADMIN' }
 })
 
 const rules = reactive({

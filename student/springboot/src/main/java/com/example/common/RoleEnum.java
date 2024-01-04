@@ -1,6 +1,6 @@
 package com.example.common;
 
 public enum RoleEnum {
-    ADMIN,
-    STUDENT
+    ADMIN,  //管理员
+    STUDENT //学生
 }
