@@ -20,7 +20,6 @@ public class GradeController {
     @Resource
     GradeService gradeService;
 
-
     @PostMapping("/add")
     public Result add(@RequestBody Grade grade) {
         gradeService.add(grade);
