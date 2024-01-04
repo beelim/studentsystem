@@ -45,8 +45,8 @@ public class StudentService {
      */
     private void add(Student student) {
 
-        Student dbstudent = studentMapper.selectByUsername(student.getUsername());
-        if(dbstudent != null){  //已有同名账号 不允许插入
+        Student dbStudent = studentMapper.selectByUsername(student.getUsername());
+        if(dbStudent != null){  //已有同名账号 不允许插入
             throw new CustomException("账号已存在");
 
         }

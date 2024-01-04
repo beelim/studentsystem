@@ -30,12 +30,20 @@
               <el-icon><Memo /></el-icon>
               <span>课程管理</span>
             </template>
-            <el-menu-item index="/course">
+            <el-menu-item index="/course" v-if="user.role === 'ADMIN' ">
               <el-icon><Document /></el-icon>
               <span>课程信息</span>
             </el-menu-item>
+            <el-menu-item index="/courseList" v-if="user.role === 'STUDENT'">
+            <el-icon><Document /></el-icon>
+            <span>选课信息</span>
+            </el-menu-item>
+            <el-menu-item index="/studentCourse">
+              <el-icon><Document /></el-icon>
+              <span>选课记录</span>
+            </el-menu-item>
           </el-sub-menu>
-          <el-menu-item index="/person">
+          <el-menu-item index="/person" v-if="user.role === 'STUDENT'">
             <el-icon><User /></el-icon>
             <span>个人资料</span>
           </el-menu-item>
