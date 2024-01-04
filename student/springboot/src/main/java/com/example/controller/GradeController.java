@@ -26,6 +26,4 @@ public class GradeController {
         return Result.success();
     }
 
-
-
 }
