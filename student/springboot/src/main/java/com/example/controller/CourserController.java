@@ -19,6 +19,9 @@ public class CourserController
     @Resource
     private CourseService courseService;
 
+    /**
+     *分页条件查询课程
+     */
     @GetMapping("/selectPage")
     public Result selectPage(@RequestParam(defaultValue = "1") Integer pageNum,
                              @RequestParam(defaultValue = "5") Integer pageSize,
@@ -40,5 +43,16 @@ public Result update(@RequestBody Course course) {
 }
 
 
+
+
+    /**
+     *删除课程
+     */
+    @DeleteMapping("/delete/{id}")
+    public Result delete(@PathVariable Integer id)
+    {
+        courseService.deleteById(id);
+        return Result.success();
+    }
 
 }

@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.poi.excel.cell.CellSetter;
 
 import com.example.common.Result;
@@ -43,6 +44,18 @@ public class WebController {
             return Result.error("角色错误");
         }
         return Result.success(dbAccount);
+    }
+
+    /**
+     * 注册接口
+     */
+    @PostMapping("/register")
+    public Result register(@RequestBody Account account) {
+        if(ObjectUtil.isEmpty(account.getUsername()) || ObjectUtil.isEmpty(account.getPassword())){
+            return Result.error("账号或密码错误");
+        }
+        studentService.register(account);
+        return Result.success();
     }
 
 

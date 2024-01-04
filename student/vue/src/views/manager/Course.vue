@@ -25,8 +25,8 @@
           <el-table-column prop="teacher" label="任课老师" />
           <el-table-column>
             <template #default="scope">
-              <el-button type="primary" @click="handleEdit(scope.row)">编辑</el-button>
-              <el-button type="danger">删除</el-button>
+              <el-button type="primary" >编辑</el-button>
+              <el-button type="danger" >删除</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -74,8 +74,8 @@
 </template>
 
 <script setup>
-import { reactive } from "vue"
-import { Search } from '@element-plus/icons-vue'
+import {reactive} from "vue"
+import {Search} from '@element-plus/icons-vue'
 import request from "@/utils/request";
 import {ElMessage} from "element-plus";
 
@@ -85,8 +85,8 @@ const data = reactive({
   teacher: '',
   tableData: [],
   total: 0,
-  pageNum: 1,  //当前的页码
-  pageSize: 5,   //每页的个数
+  pageNum: 1 ,  //当前的页码
+  pageSize: 5 ,  //每页的个数
   formVisible:false,
   form:{}
 })
@@ -113,6 +113,7 @@ const handelCurrentChange = () => {
   // 当翻页的时候重新加载数据即可
   load()
 }
+
 const reset = () => {
   data.name = ''
   data.no = ''
@@ -150,5 +151,17 @@ const save = () => {
       ElMessage.error(res.msg)
     }
   })
+}
+const del = (id) => {
+  ElMessageBox.confirm('删除数据后无法恢复，您确认删除吗？', '删除确认', { type: 'warning' }).then(res => {
+    request.delete('/course/delete/' + id).then(res => {
+      if (res.code === '200') {
+        load()    // 重新获取数据
+        ElMessage.success("操作成功")
+      } else {
+        ElMessage.error(res.msg)
+      }
+    })
+  }).catch(res => {})
 }
 </script>
