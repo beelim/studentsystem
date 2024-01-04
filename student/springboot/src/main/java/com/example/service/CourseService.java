@@ -22,6 +22,14 @@ public class CourseService
         List<Course> courseList = courseMapper.selectAll(course);
         return PageInfo.of(courseList);
     }
+//新增数据
+    public void add(Course course) {
+        courseMapper.insert(course);
+    }
+
+    public void updateById(Course course) {
+        courseMapper.updateById(course);
+    }
 
     public void deleteById(Integer id) {
         courseMapper.deleteById(id);

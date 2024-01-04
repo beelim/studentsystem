@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
+import static com.example.common.Result.success;
+
 @RestController
 @RequestMapping("/course")
 public class CourserController
@@ -26,8 +28,22 @@ public class CourserController
                              Course course)     // ?name=xx&no=xx
     {
         PageInfo<Course> pageInfo = courseService.selectPage(pageNum, pageSize,course);
-        return Result.success(pageInfo);
+        return success(pageInfo);
     }
+    @PostMapping("/add")//往数据库插入数据
+    public  Result add(@RequestBody Course course)
+    {
+        courseService.add(course);
+        return Result.success();
+    }
+    @PutMapping("/update")
+public Result update(@RequestBody Course course) {
+    courseService.updateById(course);
+    return Result.success();
+}
+
+
+
 
     /**
      *删除课程
