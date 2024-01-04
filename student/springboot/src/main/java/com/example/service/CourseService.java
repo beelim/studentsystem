@@ -22,4 +22,8 @@ public class CourseService
         List<Course> courseList = courseMapper.selectAll(course);
         return PageInfo.of(courseList);
     }
+
+    public void deleteById(Integer id) {
+        courseMapper.deleteById(id);
+    }
 }
