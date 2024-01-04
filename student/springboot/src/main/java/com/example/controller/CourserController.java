@@ -55,4 +55,5 @@ public Result update(@RequestBody Course course) {
         return Result.success();
     }
 
+
 }
