@@ -30,7 +30,6 @@ public class CourserController
         PageInfo<Course> pageInfo = courseService.selectPage(pageNum, pageSize,course);
         return success(pageInfo);
     }
-
     /**
      *新增课程
      */
