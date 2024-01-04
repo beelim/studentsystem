@@ -8,7 +8,6 @@ import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
-
 public interface StudentMapper {
 
     @Select("select * from student where username = #{username}")
@@ -27,6 +26,4 @@ public interface StudentMapper {
 
     @Select("select * from student where username like concat('%',#{username},'%') and name like concat('%',#{name},'%') order by id desc")
     List<Student> selectAll(Student student);
-
 }
-
