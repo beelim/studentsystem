@@ -62,15 +62,21 @@ public class StudentService {
         studentMapper.insert(student);
 
     }
-
+    /**
+     *删除
+     */
     public void deleteById(Integer id) {
         studentMapper.deleteById(id);
     }
-
+    /**
+     *更新
+     */
     public void updateById(Student student) {
         studentMapper.updateById(student);
     }
-
+    /**
+     *分页查询
+     */
     public PageInfo<Student> selectPage(Integer pageNum, Integer pageSize, Student student) {
         PageHelper.startPage(pageNum,pageSize);
         List<Student> studentList = studentMapper.selectAll(student);

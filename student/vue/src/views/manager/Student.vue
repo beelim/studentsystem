@@ -26,8 +26,8 @@
           <el-table-column prop="avatar" label="头像"/>
           <el-table-column label="操作" width="180">
             <template #default="scope">
-              <el-button type="primary" >编辑</el-button>
-              <el-button type="danger" >删除</el-button>
+              <el-button type="primary" @click="handleEdit(scope.row)">编辑</el-button>
+              <el-button type="danger" @click="del(scope.row.id)">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -36,12 +36,12 @@
     </div>
     <div class="card">
       <el-pagination v-model:current-page="data.pageNum" v-model:page-size="data.pageSize"
-        @current-change="handleCurrentChange" background layout="prev,pager,next" :total="data.total" />
+        @current-change="handelCurrentChange" background layout="prev,pager,next" :total="data.total" />
     </div>
 
     <el-dialog width="35%" v-model="data.formVisible" title="学生信息">
       <el-form :model="data.form" :rules="rules" ref="formRef" label-width="100px" label-position="right" style="padding-right: 30px">
-        <el-form-item label="学生账号" prop="usernaame">
+        <el-form-item label="学生账号" prop="username">
           <el-input v-model="data.form.username" autocomplete="off" />
         </el-form-item>
         <el-form-item label="学生密码" prop="password">
@@ -60,17 +60,17 @@
           <el-radio-group v-model="data.form.sex">
             <el-radio label="男"></el-radio>
             <el-radio label="女"></el-radio>
-          </el-radio-group>>
+          </el-radio-group>
         </el-form-item>
         <el-form-item label="生日" >
-          <el-date-picker style="width: 100%" format="YYYY-MM-DD" value-format="YYYY-MM-DD" v-model="data.form.birth"></el-date-picker>>
+          <el-date-picker style="width: 100%" format="YYYY-MM-DD" value-format="YYYY-MM-DD" v-model="data.form.birth"></el-date-picker>
         </el-form-item>
       </el-form>
 
       <template #footer>
         <span class="dialog-footer">
-          <el-button @click="data.formVisible=false">取消</el-button>
-          <el-button type="primary" @click="save">保存</el-button>
+          <el-button @click="data.formVisible = false">取 消</el-button>
+          <el-button type="primary" @click="save">保 存</el-button>
 <!--           @click事件处理及可传参的函数-->
         </span>
 
@@ -106,7 +106,7 @@ const load = () => {
     params: {
       pageNum: data.pageNum,
       pageSize: data.pageSize,
-      username: data.name,
+      username: data.username,
       name: data.name,
     }
   }).then(res => {
@@ -139,19 +139,17 @@ const rules = reactive({
 
 const  formRef = ref()
 
-const handleAdd= () =>{
-data.form={}
+const handleAdd = () =>{
+data.form = {}
 //先清空数据
-data.formVisible=true
+data.formVisible = true
 // 打开弹窗
 }
 
-const handleEdit=(row) =>{
+const handleEdit = (row) => {
   data.form=JSON.parse(JSON.stringify(row))  //把数据copy到弹窗里直接修改
-  data.formVisible=true
+  data.formVisible = true
 }
-
-
 
 //创建save函数保存数据到后台
 // 保存数据到后台
@@ -159,21 +157,22 @@ const save = () => {
   formRef.value.validate((valid) => {
     if (valid) {
       request.request({
-            url: data.form.id ? baseUrl + '/updata' : baseUrl + '/add',
+            url: data.form.id ? baseUrl + '/update' : baseUrl + '/add',
             method: data.form.id ? 'PUT' : 'POST',
             data: data.form
+          }).then(res => {
+          if (res.code === '200') {
+            load()    // 重新获取数据
+            data.formVisible = false  // 关闭弹窗
+            ElMessage.success("操作成功")
+          } else {
+            ElMessage.error(res.msg)
           }
-      ).then(res => {
-        if (res.code === '200') {
-          load()    // 重新获取数据
-          data.formVisible = false  // 关闭弹窗
-          ElMessage.success("操作成功")
-        } else {
-          ElMessage.error(res.msg)
-        }
       })
     }
   })
+}
+
 const del = (id) => {
   ElMessageBox.confirm('删除数据后无法恢复，您确认删除吗？', '删除确认', { type: 'warning' }).then(res => {
     request.delete(baseUrl + '/delete/' + id).then(res => {
@@ -185,5 +184,5 @@ const del = (id) => {
       }
     })
   }).catch(res => {})
-}}
+}
 </script>

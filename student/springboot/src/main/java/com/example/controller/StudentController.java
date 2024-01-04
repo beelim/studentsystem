@@ -15,28 +15,36 @@ public class StudentController {
     @Resource
     StudentService studentService;
 
-    //新增
+    /**
+     *新增
+     */
     @PostMapping("/add")
     public Result add(@RequestBody Student student){
         studentService.add(student);
         return Result.success();
     }
 
-    //删除
+    /**
+     *删除
+     */
     @DeleteMapping("/delete/{id}")
     public Result delete(@PathVariable Integer id){
         studentService.deleteById(id);
         return Result.success();
     }
 
-    //更新
+    /**
+     *更新
+     */
     @PutMapping("/update")
     public Result update(@RequestBody Student student){
         studentService.updateById(student);
         return Result.success();
     }
 
-    //分页查询
+    /**
+     *分页查询
+     */
     @GetMapping("/selectPage")
     public Result selectPage(@RequestParam(defaultValue = "1") Integer pageNum,
                              @RequestParam(defaultValue = "10") Integer pageSize,
