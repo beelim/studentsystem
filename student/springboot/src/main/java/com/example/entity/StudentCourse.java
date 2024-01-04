@@ -41,8 +41,6 @@ public class StudentCourse {
         this.name = name;
     }
 
-
-
     public Integer getStudentId() {
         return studentId;
     }

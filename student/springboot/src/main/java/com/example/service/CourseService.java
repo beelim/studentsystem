@@ -27,5 +27,3 @@ public class CourseService
         courseMapper.deleteById(id);
     }
 }
-
-

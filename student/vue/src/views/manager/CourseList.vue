@@ -94,5 +94,3 @@ const selectCourse =(row) => {
 }
 
 </script>
-
-

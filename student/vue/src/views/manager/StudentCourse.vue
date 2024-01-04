@@ -17,8 +17,6 @@
           <el-table-column prop="name" label="课程名称"/>
           <el-table-column prop="no" label="课程编号"/>
           <el-table-column prop="stduentName" label="学生名称"/>
-
-
           <el-table-column label="操作" width="180">
             <template #default="scope">
               <el-button type="primary" @click="del(scope.row)">删除</el-button>

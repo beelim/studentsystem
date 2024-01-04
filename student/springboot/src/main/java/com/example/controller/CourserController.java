@@ -28,8 +28,6 @@ public class CourserController
         PageInfo<Course> pageInfo = courseService.selectPage(pageNum, pageSize,course);
         return Result.success(pageInfo);
     }
-
-
     /**
      *删除课程
      */

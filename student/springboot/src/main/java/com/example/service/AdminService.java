@@ -14,8 +14,6 @@ public class AdminService {
     @Resource
     private AdminMapper adminMapper;
 
-
-
     /**
      * 登录
      */

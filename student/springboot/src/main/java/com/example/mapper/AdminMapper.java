@@ -8,5 +8,3 @@ public interface AdminMapper {
     @Select("select * from admin where username = #{username}")
     Admin selectByUsername(String username);
 }
-
-
