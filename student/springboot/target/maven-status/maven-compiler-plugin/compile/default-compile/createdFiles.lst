@@ -12,6 +12,7 @@ com\example\exception\CustomException.class
 com\example\mapper\CourseMapper.class
 com\example\mapper\StudentMapper.class
 com\example\entity\Student.class
+com\example\controller\FileController.class
 com\example\entity\Admin.class
 com\example\controller\WebController.class
 com\example\controller\CourserController.class

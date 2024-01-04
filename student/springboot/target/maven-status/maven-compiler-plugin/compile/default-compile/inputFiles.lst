@@ -6,6 +6,7 @@ D:\clone\student\springboot\src\main\java\com\example\service\StudentService.jav
 D:\clone\student\springboot\src\main\java\com\example\service\CourseService.java
 D:\clone\student\springboot\src\main\java\com\example\service\AdminService.java
 D:\clone\student\springboot\src\main\java\com\example\common\CorsConfig.java
+D:\clone\student\springboot\src\main\java\com\example\controller\FileController.java
 D:\clone\student\springboot\src\main\java\com\example\entity\Admin.java
 D:\clone\student\springboot\src\main\java\com\example\exception\GlobalExceptionHandler.java
 D:\clone\student\springboot\src\main\java\com\example\entity\Course.java
