@@ -61,7 +61,6 @@ const load = () => {
       name: data.name,
       no: data.no,
       teacher:  data.teacher
-
     }
   }).then(res => {
     data.tableData = res.data?.list || []
