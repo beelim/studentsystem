@@ -42,6 +42,7 @@ public class StudentController {
         return Result.success();
     }
 
+
     /**
      *分页查询
      */

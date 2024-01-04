@@ -62,12 +62,14 @@ public class StudentService {
         studentMapper.insert(student);
 
     }
+
     /**
      *删除
      */
     public void deleteById(Integer id) {
         studentMapper.deleteById(id);
     }
+
     /**
      *更新
      */
