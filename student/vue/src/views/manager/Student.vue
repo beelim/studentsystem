@@ -87,6 +87,7 @@
 import {ref,reactive} from "vue"
 import {Search} from '@element-plus/icons-vue'
 import request from "@/utils/request";
+import {ElMessage, ElMessageBox} from "element-plus";
 
 const baseUrl = '/student'
 

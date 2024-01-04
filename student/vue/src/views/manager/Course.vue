@@ -33,7 +33,7 @@
     </div>
     <div class="card">
       <el-pagination v-model:current-page="data.pageNum" v-model:page-size="data.pageSize"
-                     @current-change="handleCurrentChange" background layout="prev,pager,next" :total="data.total"/>
+                     @current-change="handelCurrentChange" background layout="prev,pager,next" :total="data.total"/>
     </div>
     <el-dialog width="35%" v-model="data.formVisible" title="课程信息">
       <el-form :model="data.form" label-width="100px" label-position="right" style="padding-right: 30px">
