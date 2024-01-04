@@ -58,4 +58,6 @@ public class StudentCourse {
     public void setCourseId(Integer courseId) {
         this.courseId = courseId;
     }
+
+
 }

@@ -24,6 +24,7 @@ public class StudentCourseController {
         return Result.success();
     }
 
+
     /**
      *删除选课
      */

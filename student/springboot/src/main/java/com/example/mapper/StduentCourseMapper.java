@@ -21,3 +21,5 @@ public interface StduentCourseMapper {
     @Delete("delete from student_course where id=#{id}")
     void deleteById(Integer id);
 }
+
+

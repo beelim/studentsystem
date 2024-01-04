@@ -35,3 +35,5 @@ public class StudentCourseService {
         stduentCourseMapper.deleteById(id);
     }
 }
+
+

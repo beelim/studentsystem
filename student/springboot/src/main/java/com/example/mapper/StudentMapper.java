@@ -12,3 +12,4 @@ public interface StudentMapper {
     @Insert("insert into student(username,password,name,phone,email,sex,birth,avatar,role) values(#{username},#{password},#{name},#{phone},#{email},#{sex},#{birth},#{avatar},#{role})")
     void insert(Student student);
 }
+

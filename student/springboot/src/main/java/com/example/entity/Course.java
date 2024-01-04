@@ -2,6 +2,7 @@ package com.example.entity;
 
 public class Course
 {
+
     private Integer id;
     private String name;
     private String no;
