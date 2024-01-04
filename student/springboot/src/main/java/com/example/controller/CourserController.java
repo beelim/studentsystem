@@ -6,12 +6,11 @@ import com.example.common.Result;
 import com.example.entity.Course;
 import com.example.service.CourseService;
 import com.github.pagehelper.PageInfo;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+
+import static com.example.common.Result.success;
 
 @RestController
 @RequestMapping("/course")
@@ -26,6 +25,20 @@ public class CourserController
                              Course course)     // ?name=xx&no=xx
     {
         PageInfo<Course> pageInfo = courseService.selectPage(pageNum, pageSize,course);
-        return Result.success(pageInfo);
+        return success(pageInfo);
     }
+    @PostMapping("/add")//往数据库插入数据
+    public  Result add(@RequestBody Course course)
+    {
+        courseService.add(course);
+        return Result.success();
+    }
+    @PutMapping("/update")
+public Result update(@RequestBody Course course) {
+    courseService.updateById(course);
+    return Result.success();
+}
+
+
+
 }
