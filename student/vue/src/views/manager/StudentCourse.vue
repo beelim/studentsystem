@@ -11,6 +11,7 @@
 
     <div class="card" style="margin-bottom: 10px">
 
+
       <div>
         <el-table stripe :data="data.tableData" style="width: 100%">
           <el-table-column prop="id" label="序号" width="70"/>
