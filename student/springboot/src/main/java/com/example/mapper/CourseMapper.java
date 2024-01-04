@@ -14,7 +14,6 @@ public interface CourseMapper
             "and teacher like concat('%', #{teacher} ,'%') order by id desc")
     List<Course> selectAll(Course course);
 
-
     @Insert("insert into course (name,no,descr,times,teacher) values(#{name},#{no},#{descr},#{times},#{teacher})")
     void insert(Course course);
 
@@ -23,4 +22,5 @@ public interface CourseMapper
 
     @Delete("delete from course where id = #{id}")
     void deleteById(Integer id);
+
 }
