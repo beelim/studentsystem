@@ -6,10 +6,7 @@ import com.example.common.Result;
 import com.example.entity.Course;
 import com.example.service.CourseService;
 import com.github.pagehelper.PageInfo;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -20,6 +17,9 @@ public class CourserController
     @Resource
     private CourseService courseService;
 
+    /**
+     *分页条件查询课程
+     */
     @GetMapping("/selectPage")
     public Result selectPage(@RequestParam(defaultValue = "1") Integer pageNum,
                              @RequestParam(defaultValue = "5") Integer pageSize,
@@ -28,4 +28,15 @@ public class CourserController
         PageInfo<Course> pageInfo = courseService.selectPage(pageNum, pageSize,course);
         return Result.success(pageInfo);
     }
+
+    /**
+     *删除课程
+     */
+    @DeleteMapping("/delete/{id}")
+    public Result delete(@PathVariable Integer id)
+    {
+        courseService.deleteById(id);
+        return Result.success();
+    }
+
 }
