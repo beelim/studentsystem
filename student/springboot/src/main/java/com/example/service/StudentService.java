@@ -6,9 +6,12 @@ import com.example.entity.Account;
 import com.example.entity.Student;
 import com.example.exception.CustomException;
 import com.example.mapper.StudentMapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class StudentService {
@@ -17,7 +20,6 @@ public class StudentService {
     private StudentMapper studentMapper;
     /**
      * 登录
-
      */
     public Account login(Account account) {
         Account dbStudent = studentMapper.selectByUsername(account.getUsername());
@@ -33,6 +35,9 @@ public class StudentService {
         return dbStudent;
     }
 
+    /**
+     * 学生注册
+     */
     public void register(Account account){
         Student student = new Student();
         student.setUsername(account.getUsername());  //账号
@@ -40,10 +45,10 @@ public class StudentService {
         this.add(student);
     }
 
-    /*
-    *新增
+    /**
+     *新增
      */
-    private void add(Student student) {
+    public void add(Student student) {
 
         Student dbStudent = studentMapper.selectByUsername(student.getUsername());
         if(dbStudent != null){  //已有同名账号 不允许插入
@@ -58,4 +63,17 @@ public class StudentService {
 
     }
 
+    public void deleteById(Integer id) {
+        studentMapper.deleteById(id);
+    }
+
+    public void updateById(Student student) {
+        studentMapper.updateById(student);
+    }
+
+    public PageInfo<Student> selectPage(Integer pageNum, Integer pageSize, Student student) {
+        PageHelper.startPage(pageNum,pageSize);
+        List<Student> studentList = studentMapper.selectAll(student);
+        return PageInfo.of(studentList);
+    }
 }
