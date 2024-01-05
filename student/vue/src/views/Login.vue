@@ -75,7 +75,7 @@ const login = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url("@/assets/imgs/bg.png");
+  background-image: url("@/assets/imgs/bg5.png");
   background-size: cover;
 }
 

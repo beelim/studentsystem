@@ -148,7 +148,7 @@ const save = () => {
 
 const del = (id) => {
   ElMessageBox.confirm('删除数据后无法恢复，您确认删除吗？', '删除确认', { type: 'warning' }).then(res => {
-    request.delete('/studentCourse/delete/' + id).then(res => {
+    request.delete('/course/delete/' + id).then(res => {
       if (res.code === '200') {
         load()    // 重新获取数据
         ElMessage.success("操作成功")

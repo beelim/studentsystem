@@ -11,7 +11,7 @@
           </el-upload>
         </el-form-item>
         <el-form-item label="学生账号" prop="username">
-          <el-input v-model="data.form.username" autocomplete="off" disabled/>
+          <el-input v-model="data.form.username" autocomplete="off" disabled />
         </el-form-item>
         <el-form-item label="学生密码" prop="password">
           <el-input show-password v-model="data.form.password" autocomplete="off"/>
@@ -53,9 +53,11 @@ import {Plus} from "@element-plus/icons-vue"
 const data = reactive({
   form: JSON.parse(localStorage.getItem('student-user') || "{}")
 })
+
 const handleImgUploadSuccess = (res) => {
-  data.form.avater = res.data
+  data.form.avatar = res.data
 }
+
 const update = () => {
   request.put('/student/update', data.form).then(res => {
     if (res.code === '200') {
@@ -67,6 +69,7 @@ const update = () => {
   })
 }
 </script>
+
 <style>
 .avatar-uploader .el-upload {
   border: 1px dashed #d9d9d9;
@@ -75,11 +78,9 @@ const update = () => {
   position: relative;
   overflow: hidden;
 }
-
 .avatar-uploader .el-upload:hover {
   border-color: #409EFF;
 }
-
 .avatar-uploader-icon {
   font-size: 28px;
   color: #8c939d;
@@ -88,11 +89,9 @@ const update = () => {
   line-height: 100px;
   text-align: center;
 }
-
 .avatar {
   width: 100px;
   height: 100px;
   display: block;
 }
-
 </style>
